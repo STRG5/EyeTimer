@@ -11,13 +11,14 @@ public class EyeTimer {
 
   private static Timer eyeTimer = new Timer("EyeTimer");
   private static Timer pauseTimer = new Timer("PauseTimer");
+  private static JFrame jFrame;
 
   public static void main(String[] args) {
     openStartGUI();
   }
 
   private static void openStartGUI() {
-    final JFrame jFrame = new JFrame("EyeTimer");
+    jFrame = new JFrame("EyeTimer");
     final JPanel jPanel = new JPanel();
 
     JButton jButton = new JButton("Start");
@@ -39,7 +40,7 @@ public class EyeTimer {
   }
 
   private static void openStopGUI() {
-    final JFrame jFrame = new JFrame("EyeTimer");
+    jFrame = new JFrame("EyeTimer");
     final JPanel jPanel = new JPanel();
 
     JButton jButton = new JButton("Stop");
@@ -77,6 +78,7 @@ public class EyeTimer {
         trayIcon.setImageAutoSize(true);
 
         try {
+          jFrame.toFront();
           tray.add(trayIcon);
           trayIcon.displayMessage("Augen Pause", "Bitte schließe deine Augen für 2 Minuten. Ich stoppe die Zeit", TrayIcon.MessageType.WARNING);
           startPauseTimer();
